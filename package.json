@@ -1,20 +1,29 @@
 {
   "name": "express-ts",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "git@github.com:philopian/express-ts.git",
   "author": "Phil Willis <philopian@gmail.com>",
   "license": "MIT",
   "packageManager": "yarn@3.5.0",
+  "scripts": {
+    "lint": "prettier --config .prettierrc src/*.{ts} src/**/*.{ts} --write",
+    "prestart": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node-dev --respawn -- src/index.ts",
+    "build": "tsc"
+  },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
+    "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "eslint-config-prettier": "^8.8.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "prettier": "^2.8.7"
-  },
-  "scripts": {
-    "lint": "prettier --config .prettierrc src/*.{ts} src/**/*.{ts} --write"
+    "prettier": "^2.8.7",
+    "ts-node": "^10.9.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.0.4"
   }
 }
