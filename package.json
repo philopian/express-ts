@@ -11,8 +11,10 @@
     "lint": "prettier --config .prettierrc src/*.{ts} src/**/*.{ts} --write",
     "prestart": "tsc",
     "start": "node dist/index.js",
-    "dev": "ts-node-dev --respawn -- src/index.ts",
-    "build": "tsc"
+    "dev": "concurrently --kill-others-on-fail 'yarn dev:server' 'yarn db' ",
+    "dev:server": "ts-node-dev --respawn -- src/index.ts",
+    "build": "tsc",
+    "db": "json-server --watch db.json"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
@@ -28,6 +30,8 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "express": "^4.18.2"
+    "concurrently": "^8.0.1",
+    "express": "^4.18.2",
+    "json-server": "^0.17.3"
   }
 }
